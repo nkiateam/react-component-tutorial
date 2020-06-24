@@ -6,7 +6,7 @@
 }
 
 
-#wrapper {
+.wrapper {
   margin: auto;
   max-width: 480px;
   width: calc(100vw - 40px);
