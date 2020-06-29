@@ -1,4 +1,7 @@
 # react-component-tutorial
-What Is a React Component?
 
-자료 준비중 입니다..
+## 교육준비
+1. git clone https://github.com/nkiateam/react-component-tutorial
+2. cd react-component-tutorial
+3. npm install
+
