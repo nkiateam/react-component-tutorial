@@ -2,6 +2,62 @@ import React, {Component} from 'react';
 import {Button, Checkbox, Col, Input, Row, Tabs} from 'antd';
 const { TabPane } = Tabs;
 
+class ContainerComponentEx extends Component {
+    state = {
+        text : '',
+        list: [],
+        index: 0,
+    };
+
+    onChangeText = (e) => {
+        this.setState({
+            text: e.target.value,
+        });
+    };
+
+    onSubmit = () => {
+        this.setState({
+            list: this.state.list.concat({
+                index: this.state.index++,
+                text: this.state.text,
+                complete: false,
+            }),
+            text: '',
+        })
+    };
+
+    onDelete =(index)=> {
+        this.setState({
+            list: this.state.list.filter(todo => todo.index !== index)
+        });
+    };
+    onChangeCheckbox = (index) => {
+        this.setState({
+            list: this.state.list.map(todo => todo.index === index ? { ...todo, complete : !todo.complete} : todo),
+        });
+    };
+
+    render() {
+        const { text, list } = this.state;
+        return (
+            <div className="APP">
+                <div className="wrapper">
+                    <HeaderComponent
+                        onChangeText={this.onChangeText}
+                        onSubmit={this.onSubmit}
+                        text={text}
+                    />
+                    <ContentsComponent
+                        list={list}
+                        onDelete={this.onDelete}
+                        onChangeCheckbox={this.onChangeCheckbox}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+
 class HeaderComponent extends Component {
     render(){
         const { onChangeText, onSubmit, text } = this.props;
@@ -15,7 +71,7 @@ class HeaderComponent extends Component {
                         onChange={onChangeText}
                         onKeyUp={e => {
                             if(e.keyCode === 13){
-                               onSubmit()
+                                onSubmit()
                             }
                         }}
                     />
@@ -96,60 +152,5 @@ class ContentsComponent extends  Component {
     }
 }
 
-class ContainerComponentEx extends Component {
-    state = {
-        text : '',
-        list: [],
-        index: 0,
-    };
-
-    onChangeText = (e) => {
-        this.setState({
-            text: e.target.value,
-        });
-    };
-
-    onSubmit = () => {
-        this.setState({
-            list: this.state.list.concat({
-                index: this.state.index++,
-                text: this.state.text,
-                complete: false,
-            }),
-            text: '',
-        })
-    };
-
-    onDelete =(index)=> {
-        this.setState({
-            list: this.state.list.filter(todo => todo.index !== index)
-        });
-    };
-    onChangeCheckbox = (index) => {
-        this.setState({
-            list: this.state.list.map(todo => todo.index === index ? { ...todo, complete : !todo.complete} : todo),
-        });
-    };
-
-    render() {
-        const { text, list } = this.state;
-        return (
-            <div className="APP">
-                <div className="wrapper">
-                    <HeaderComponent
-                        onChangeText={this.onChangeText}
-                        onSubmit={this.onSubmit}
-                        text={text}
-                    />
-                    <ContentsComponent
-                        list={list}
-                        onDelete={this.onDelete}
-                        onChangeCheckbox={this.onChangeCheckbox}
-                    />
-                </div>
-            </div>
-        );
-    }
-}
 
 export default ContainerComponentEx;

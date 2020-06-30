@@ -2,6 +2,19 @@ import React, {Component} from 'react';
 import {Button, Checkbox, Col, Input, Row, Tabs} from 'antd';
 const { TabPane } = Tabs;
 
+class ContainerComponent extends Component {
+
+    render() {
+        return (
+            <div className="APP">
+                <div className="wrapper">
+
+                </div>
+            </div>
+        );
+    }
+}
+
 class HeaderComponent extends Component {
     render(){
         return(
@@ -44,19 +57,6 @@ class ContentsComponent extends  Component {
                 </Col>
             </Row>
         )
-    }
-}
-
-class ContainerComponent extends Component {
-
-    render() {
-        return (
-            <div className="APP">
-                <div className="wrapper">
-
-                </div>
-            </div>
-        );
     }
 }
 
