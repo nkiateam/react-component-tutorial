@@ -23,7 +23,7 @@ class List extends React.Component {
                     <span>Loading...</span>
                     :
                     dataSource.map((item, key) => {
-                        return <div key={key}><span>{item.countryName}</span><br /></div>
+                        return <div key={key}><span key={key}>{item.countryName}</span><br /></div>
                     })
                     // <Table
                     //     dataSource={dataSource}
