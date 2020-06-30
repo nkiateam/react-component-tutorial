@@ -5,6 +5,11 @@
     font-family: sans-serif;
 }
 
+.center {
+    margin: auto;
+    max-width: 480px;
+    width: calc(100vw - 40px);
+}
 
 .wrapper {
     margin: auto;

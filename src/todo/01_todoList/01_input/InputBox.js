@@ -4,8 +4,8 @@ import  { Input } from  'antd';
 class InputBox extends Component {
     render() {
         return (
-            <div id="add">
-                //TODO: input
+            <div className="center">
+
             </div>
         );
     }
