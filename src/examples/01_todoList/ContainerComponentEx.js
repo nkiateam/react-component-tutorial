@@ -9,13 +9,13 @@ class ContainerComponentEx extends Component {
         index: 0,
     };
 
-    onChangeText = (e) => {
+    handleChangeText = (e) => {
         this.setState({
             text: e.target.value,
         });
     };
 
-    onSubmit = () => {
+    handleAddList = () => {
         this.setState({
             list: this.state.list.concat({
                 index: this.state.index++,
@@ -26,12 +26,12 @@ class ContainerComponentEx extends Component {
         })
     };
 
-    onDelete =(index)=> {
+    handleClickDelete =(index)=> {
         this.setState({
             list: this.state.list.filter(todo => todo.index !== index)
         });
     };
-    onChangeCheckbox = (index) => {
+    handleChangeCheckbox = (index) => {
         this.setState({
             list: this.state.list.map(todo => todo.index === index ? { ...todo, complete : !todo.complete} : todo),
         });
@@ -43,14 +43,14 @@ class ContainerComponentEx extends Component {
             <div className="APP">
                 <div className="wrapper">
                     <HeaderComponent
-                        onChangeText={this.onChangeText}
-                        onSubmit={this.onSubmit}
+                        onChangeText={this.handleChangeText}
+                        onSubmit={this.handleAddList}
                         text={text}
                     />
                     <ContentsComponent
                         list={list}
-                        onDelete={this.onDelete}
-                        onChangeCheckbox={this.onChangeCheckbox}
+                        onClickDelete={this.handleClickDelete}
+                        onChangeCheckbox={this.handleChangeCheckbox}
                     />
                 </div>
             </div>
@@ -83,7 +83,7 @@ class HeaderComponent extends Component {
 
 class ListComponent extends Component {
     render() {
-        const { todo, onDelete, onChangeCheckbox  } = this.props;
+        const { todo, onClickDelete, onChangeCheckbox  } = this.props;
         return (
             <Row className="todo" >
                 <Col
@@ -104,7 +104,7 @@ class ListComponent extends Component {
                     span={4}
                     className="action"
                 >
-                    <Button type="link" onClick={() => onDelete(todo.index)}>
+                    <Button type="link" onClick={() => onClickDelete(todo.index)}>
                         Remove
                     </Button>
                 </Col>
