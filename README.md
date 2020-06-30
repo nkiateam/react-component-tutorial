@@ -4,3 +4,5 @@
 2. cd react-component-tutorial
 3. npm install
 
+## git을 미리 다운받아주세요
+https://git-scm.com/
