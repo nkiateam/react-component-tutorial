@@ -1,6 +1,6 @@
 import React from 'react';
 
-class HocTest extends React.Component {
+class HocButtonTest extends React.Component {
     constructor(props) {
         super(props);
 
@@ -44,4 +44,4 @@ class HocTest extends React.Component {
     }
 }
 
-export default HocTest;
+export default HocButtonTest;
